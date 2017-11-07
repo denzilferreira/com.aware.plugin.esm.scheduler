@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AWARE: ESM Scheduler</string>
+    <string name="plugin_template">Plugin: ESM Scheduler</string>
+</resources>
