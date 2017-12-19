@@ -4,13 +4,10 @@ import android.Manifest;
 import android.content.ContentUris;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.CalendarContract;
 import android.text.Html;
-import android.text.format.DateUtils;
-import android.util.Log;
 
 import com.aware.Aware;
 import com.aware.Aware_Preferences;
@@ -44,20 +41,22 @@ public class Plugin extends Aware_Plugin {
             //Initialize our plugin's settings
             Aware.setSetting(this, Settings.STATUS_PLUGIN_ESM_SCHEDULER, true);
 
-            Cursor calendars = getContentResolver().query(CalendarContract.Calendars.CONTENT_URI,
+            Cursor aware_calendars = getContentResolver().query(CalendarContract.Calendars.CONTENT_URI,
                     new String[]{CalendarContract.Calendars._ID, CalendarContract.Calendars.NAME},
                     CalendarContract.Calendars.NAME + " LIKE 'AWARE%'",
                     null, null);
-            if (calendars != null && calendars.moveToFirst()) {
+
+            if (aware_calendars != null && aware_calendars.moveToFirst()) {
+
                 Cursor allesms = getContentResolver().query(CalendarContract.Events.CONTENT_URI,
                         null,
-                        CalendarContract.Events.CALENDAR_ID + "=" + calendars.getInt(calendars.getColumnIndex(CalendarContract.Calendars._ID)) + " AND " +
+                        CalendarContract.Events.CALENDAR_ID + "=" + aware_calendars.getInt(aware_calendars.getColumnIndex(CalendarContract.Calendars._ID)) + " AND " +
                                 CalendarContract.Events.TITLE + " LIKE 'ESM%'",
                         null,
                         CalendarContract.Events.DTSTART + " ASC");
+
                 if (allesms != null && allesms.moveToFirst()) {
                     do {
-
                         Calendar now = Calendar.getInstance();
                         Calendar endToday = Calendar.getInstance();
                         endToday.set(now.get(Calendar.YEAR), now.get(Calendar.MONTH), now.get(Calendar.DAY_OF_MONTH), 23, 59, 59);
@@ -89,7 +88,8 @@ public class Plugin extends Aware_Plugin {
                                         esm.setTimer(timer);
 
                                         Scheduler.saveSchedule(getApplication(), esm);
-                                    } else { //check if time or the ESM has changed since the last time we scheduled it
+
+                                    } else { //check if time or the ESM definition has changed since the last time we scheduled it
                                         if (esm.getTimer() != instances.getLong(instances.getColumnIndex(CalendarContract.Instances.BEGIN))) {
                                             Calendar newTimer = Calendar.getInstance();
                                             newTimer.setTimeInMillis(instances.getLong(instances.getColumnIndex(CalendarContract.Instances.BEGIN)));
@@ -111,7 +111,7 @@ public class Plugin extends Aware_Plugin {
                 }
                 if (allesms != null && ! allesms.isClosed()) allesms.close();
             }
-            if (calendars != null && !calendars.isClosed()) calendars.close();
+            if (aware_calendars != null && !aware_calendars.isClosed()) aware_calendars.close();
 
             //Initialise AWARE instance in plugin
             Aware.startAWARE(this);
