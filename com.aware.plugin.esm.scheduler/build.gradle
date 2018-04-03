@@ -27,7 +27,6 @@ android {
     lintOptions {
         abortOnError false
     }
-    buildToolsVersion '26.0.2'
 }
 
 if (System.getenv("storeFile") != null && System.getenv("storePassword") != null && System.getenv("keyAlias") != null && System.getenv("keyPassword") != null) {
@@ -49,8 +48,5 @@ configurations.all {
 }
 
 dependencies {
-    implementation "com.android.support:appcompat-v7:$support_libs"
-    implementation "com.github.denzilferreira:aware-client:$aware_libs"
-    implementation "com.android.support:appcompat-v7:$support_libs"
-    implementation "com.android.support:gridlayout-v7:$support_libs"
+    api "com.github.denzilferreira:aware-client:$aware_libs"
 }

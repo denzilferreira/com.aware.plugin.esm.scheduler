@@ -123,7 +123,9 @@ public class Plugin extends Aware_Plugin {
     private String cleanString(String badString) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             return Html.fromHtml(badString, Html.FROM_HTML_MODE_LEGACY).toString().replace("\"","\'");
-        } else return Html.fromHtml(badString).toString().replace("\"","\'");
+        } else {
+            return Html.fromHtml(badString).toString().replace("\"","\'");
+        }
     }
 
     @Override

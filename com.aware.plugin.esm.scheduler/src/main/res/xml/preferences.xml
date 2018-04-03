@@ -9,9 +9,4 @@
         android:persistent="true"
         android:summary="Activate/deactivate plugin" />
 
-    <EditTextPreference
-        android:key="calendar_url"
-        android:persistent="true"
-        android:summary="Shared calendar in Google Calendar" />
-
 </PreferenceScreen>
