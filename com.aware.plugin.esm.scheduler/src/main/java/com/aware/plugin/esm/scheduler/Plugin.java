@@ -62,9 +62,6 @@ public class Plugin extends Aware_Plugin {
             }
             //check calendar for events for the first time
             checkCalendars();
-
-            //Initialise AWARE instance in plugin
-            Aware.startAWARE(this);
         }
 
         return START_STICKY;
@@ -77,9 +74,6 @@ public class Plugin extends Aware_Plugin {
         Aware.setSetting(this, Settings.STATUS_PLUGIN_ESM_SCHEDULER, false);
 
         getContentResolver().unregisterContentObserver(calendarObserver);
-
-        //Stop AWARE instance in plugin
-        Aware.stopAWARE(this);
     }
 
     /**
