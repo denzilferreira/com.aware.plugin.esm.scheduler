@@ -11,7 +11,7 @@ import com.aware.Aware;
 
 public class Settings extends PreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 
-    //Plugin settings in XML @xml/preferences
+    //Plugin settings in XML @xml/preferences_esm_scheduler
     public static final String STATUS_PLUGIN_ESM_SCHEDULER = "status_plugin_esm_scheduler";
 
     //Plugin settings UI elements
@@ -20,7 +20,7 @@ public class Settings extends PreferenceActivity implements SharedPreferences.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.preferences);
+        addPreferencesFromResource(R.xml.preferences_esm_scheduler);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         prefs.registerOnSharedPreferenceChangeListener(this);
     }
