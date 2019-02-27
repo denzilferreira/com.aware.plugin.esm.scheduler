@@ -14,6 +14,7 @@
 
         <activity
             android:name="com.aware.plugin.esm.scheduler.Settings"
+            android:label="AWARE: ESM Scheduler"
             android:exported="true" />
 
     </application>

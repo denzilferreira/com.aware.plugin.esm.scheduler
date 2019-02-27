@@ -8,8 +8,9 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 
 import com.aware.Aware;
+import com.aware.ui.AppCompatPreferenceActivity;
 
-public class Settings extends PreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
+public class Settings extends AppCompatPreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     //Plugin settings in XML @xml/preferences_esm_scheduler
     public static final String STATUS_PLUGIN_ESM_SCHEDULER = "status_plugin_esm_scheduler";

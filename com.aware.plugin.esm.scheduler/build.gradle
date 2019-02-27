@@ -60,5 +60,5 @@ configurations.all {
 }
 
 dependencies {
-    api "com.github.denzilferreira:aware-client:$aware_libs"
+    api project(':aware-core')
 }
