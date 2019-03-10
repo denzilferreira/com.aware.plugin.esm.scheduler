@@ -148,7 +148,7 @@ public class Plugin extends Aware_Plugin {
                                     }
 
                                     if (Aware.DEBUG) {
-                                        Log.d(Aware.TAG, "Calendar ESM saved: " + esm.toString());
+                                        Log.d(Aware.TAG, "Calendar ESM saved: " + esm.build().toString(5));
                                     }
 
                                 } catch (JSONException e) {
