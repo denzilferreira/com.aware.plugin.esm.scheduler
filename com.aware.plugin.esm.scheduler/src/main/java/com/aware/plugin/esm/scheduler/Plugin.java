@@ -50,8 +50,15 @@ public class Plugin extends Aware_Plugin {
         super.onStartCommand(intent, flags, startId);
 
         if (PERMISSIONS_OK) {
-            //Initialize our plugin's settings
-            Aware.setSetting(this, Settings.STATUS_PLUGIN_ESM_SCHEDULER, true);
+
+            if (Aware.getSetting(getApplicationContext(), Settings.STATUS_PLUGIN_ESM_SCHEDULER).length() == 0) {
+                Aware.setSetting(getApplicationContext(), Settings.STATUS_PLUGIN_ESM_SCHEDULER, true);
+            } else {
+                if (Aware.getSetting(getApplicationContext(), Settings.STATUS_PLUGIN_ESM_SCHEDULER).equalsIgnoreCase("false")) {
+                    Aware.stopPlugin(getApplicationContext(), getPackageName());
+                    return START_STICKY;
+                }
+            }
 
             if (calendarObserver == null) {
                 calendarObserver = new CalendarObserver(new Handler());
