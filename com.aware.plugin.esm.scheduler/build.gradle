@@ -59,6 +59,4 @@ configurations.all {
     resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
 }
 
-dependencies {
-    api project(':aware-core')
-}
+apply from: '../dependencies.gradle'

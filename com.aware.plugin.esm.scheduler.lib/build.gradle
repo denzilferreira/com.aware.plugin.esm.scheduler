@@ -48,6 +48,4 @@ android {
     }
 }
 
-dependencies {
-    api project(":aware-core")
-}
+apply from: '../dependencies.gradle'
