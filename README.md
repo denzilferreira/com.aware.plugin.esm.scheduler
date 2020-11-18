@@ -14,6 +14,7 @@ This plugin allows you to schedule ESMs using a shared Google Calendar with your
 This plugin assumes the following:
 - You have a Google Calendar with the name "AWARE*" where * can be any string you want to distinguish between studies or groups of participants
 - The event **title** starts with "ESM*" where * is the title is unique within a day schedule, to distinguish between different sets of questions
+- The event **start** and **end** __MUST BE__ the same. The ESM is triggered __just once__. You can schedule a repeated event as long as the time interval is 0 minutes.
 - The event **description** is the actual ESM JSON queue, with 1 or more questions (i.e., a JSONArray with ESM JSONObjects) (see [here](http://www.awareframework.com/esm/) for ESM documentation about the JSON structure and options). For example, here we are asking the users to rate their daily productivity using 1 ESM JSONObject of type 4 (i.e., Likert), with a 5-point scale:
 
 ```
